@@ -1,6 +1,7 @@
 from typing import List
 from models import Data
 from database import session
+from schemas import DataObject
 
 class DataQuery:
     def create_data(self, request_data) -> Data:
@@ -22,3 +23,11 @@ class DataQuery:
             objects.append(obj)
         
         return objects
+    
+    def get_data_by_id(self,data_id:int) ->Data:
+        data_from_db = session.query(Data).filter(Data.id == data_id).first()
+        return data_from_db
+    
+    def get_readable_data(self,data:Data):
+        readable_data = DataObject(id=data.id,data=data.decode("utf-8"))
+        return readable_data

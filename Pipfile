@@ -12,6 +12,7 @@ mysqlclient = "*"
 pymysql = "*"
 python-dotenv = "*"
 waitress = "*"
+pydantic = "*"
 
 [dev-packages]
 
