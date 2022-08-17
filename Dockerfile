@@ -11,6 +11,5 @@ COPY Pipfile Pipfile.lock ./
 RUN pip install pipenv \
     && pipenv install --dev  --system --deploy --ignore-pipfile
 
-EXPOSE 5000
 COPY . .
-CMD ["flask","--app", "main", "run"]
+CMD ["waitress-serve", "--port=8080", "--call", "app:create_app"]

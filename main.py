@@ -1,7 +1,7 @@
-from typing import List
 from flask import request
 from flask.views import MethodView
-from app import app
+
+from typing import List
 from queries import DataQuery
 
 class GroupAPI(MethodView):
@@ -14,5 +14,3 @@ class GroupAPI(MethodView):
         request_data_bytes = request_data.encode('utf-8')
         DataQuery().create_data(request_data_bytes)
         return "Object was successfuly created!"
-
-app.add_url_rule('/', view_func=GroupAPI.as_view('show_users'))
